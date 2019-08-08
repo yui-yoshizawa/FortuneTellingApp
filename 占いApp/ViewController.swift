@@ -11,18 +11,28 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    @IBOutlet weak var datePicker: UIDatePicker!    // 1文字目小文字にすべきだったと思う。
+  
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var numLabel: UILabel!
 
     @IBOutlet weak var resultTextView: UITextView!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!    // UISegmentedControl を　UILabel にしていたのが原因でうまくいってなかった。
+    
+    
+    // スライダーの変数作ってみる
+    var likeNum = 0
     
     // ここに関数つくって下で呼び出す
     
     var yearText = ""
     var monthText = ""
     var dateText = ""
+    var bloodTypeText = ""
+    var likeNumText = ""
     
+    var bloodTypeNum = 0
     
     
     // ------------------------------------------------------------------
@@ -32,6 +42,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
  
+   
+    
+    
+    // 【スライダー】について書くよー
+    @IBAction func numSlider(_ sender: UISlider) {
+        let sliderValue:Int = Int(sender.value)    // 少数がうざいので、整数に変更
+        numLabel.text = String(sliderValue)    // 値をラベルに表示
+        likeNum = sliderValue
+    }
+    
+    
     
     // 【占うボタンを押した後の処理】についてだよー
     func checkResult() {
@@ -78,7 +99,7 @@ class ViewController: UIViewController {
             print("エラー")
             return
         }
-    
+        
         
         // 「月」の値を取得
         let month =  yyyymmdd[yyyymmdd.index(yyyymmdd.startIndex, offsetBy: 4)..<yyyymmdd.index(yyyymmdd.startIndex, offsetBy: 6)]  // 6,7文字目を取得
@@ -146,25 +167,57 @@ class ViewController: UIViewController {
         
         
         
-        // 4. 血液型
+        // 4. 血液型    // 血液型のところやり方わかんない
+        let selectedIndex = segmentedControl.selectedSegmentIndex    // .selectedSegmentIndex でインデックス番号を取得。
+        
+        switch selectedIndex{
+        case 0:
+            bloodTypeText = "几帳面な"
+            
+        case 1:
+            bloodTypeText = "優しい"
+            
+        case 2:
+            bloodTypeText = "穏やかな"
+            
+        case 3:
+            bloodTypeText = "真面目な"
+            
+        default:
+            return
+            
+        }
         
         
         // 5. 好きな数
+        switch likeNum % 5 {
+        case 0:
+            likeNumText = "スポーツ"
+        case 1:
+            likeNumText = "読書"
+        case 2:
+            likeNumText = "旅"
+        case 3:
+            likeNumText = "散歩"
+        case 4:
+            likeNumText = "食べ歩き"
+        default:
+            return
+        }
+       
+        
+        
+        
+        
         
         // 6. 呼び出し
         
-        resultTextView.text = "あなたは\(yearText)に愛されています。属性は「\(monthText)」です。あなたからは\(dateText)が感じられます。"
+        resultTextView.text = "あなたは\(yearText)に愛されています。属性は「\(monthText)」です。あなたからは\(dateText)が感じられます。\(bloodTypeText)性格です。\(likeNumText)が吉。"
         
         
     }
     
-    
-    
-    // 【スライダー】について書くよー
-    @IBAction func numSlider(_ sender: UISlider) {
-        let sliderValue:Int = Int(sender.value)    // 少数がうざいので、整数に変更
-        numLabel.text = String(sliderValue)    // 値をラベルに表示
-    }
+
     
     // 【占うボタンを押した後】の処理だよ
     @IBAction func actionButton(_ sender: Any) {

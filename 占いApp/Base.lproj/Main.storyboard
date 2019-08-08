@@ -83,7 +83,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="テスト" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EtN-OF-Vr3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EtN-OF-Vr3">
                                 <rect key="frame" x="0.0" y="449.5" width="414" height="412.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -138,8 +138,10 @@
                     </view>
                     <connections>
                         <outlet property="DatePicker" destination="4RN-0O-afQ" id="Wa2-2L-sDF"/>
+                        <outlet property="datePicker" destination="4RN-0O-afQ" id="gX6-Ua-Z1g"/>
                         <outlet property="numLabel" destination="1T0-pe-Zos" id="gTv-1x-Eyf"/>
                         <outlet property="resultTextView" destination="EtN-OF-Vr3" id="mdp-Dx-Cpf"/>
+                        <outlet property="segmentedControl" destination="QDZ-Pf-Ddi" id="xJ0-uk-L1s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

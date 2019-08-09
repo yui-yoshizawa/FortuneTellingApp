@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         
         
         // 「月」の値を取得
-        let month =  yyyymmdd[yyyymmdd.index(yyyymmdd.startIndex, offsetBy: 4)..<yyyymmdd.index(yyyymmdd.startIndex, offsetBy: 6)]  // 6,7文字目を取得。mmの値を取得。
+        let month =  yyyymmdd[yyyymmdd.index(yyyymmdd.startIndex, offsetBy: 4)..<yyyymmdd.index(yyyymmdd.startIndex, offsetBy: 6)]  // 5,6文字目を取得。mmの値を取得。
         let monthType = month.suffix(1)
         
         // ケース
